@@ -8,10 +8,14 @@ const client = new Client({
   ]
 });
 
+const STICKY_CHANNEL_ID = "1455613452390236348";
 let lastSticky = null;
 
 client.on('messageCreate', async (message) => {
   if (message.author.bot) return;
+
+  // dito lang siya gagana
+  if (message.channel.id !== STICKY_CHANNEL_ID) return;
 
   if (lastSticky) {
     try {
